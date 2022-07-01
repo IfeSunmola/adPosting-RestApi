@@ -1,11 +1,15 @@
 package com.example.adpostingrestapi.Model.Post;
 
 import com.example.adpostingrestapi.Model.User.User;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@Setter
 public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private long postId;
     private String title;
@@ -18,4 +22,12 @@ public class Post {
             name = "userId"
     )
     private User userWhoPosted;
+
+    public Post(PostDto postDto){
+        title = postDto.getTitle();
+        body = postDto.getBody();
+        timePosted = LocalDateTime.now();
+        category = postDto.getPostCategory();
+        userWhoPosted = postDto.getUserWhoPosted();
+    }
 }
