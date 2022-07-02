@@ -19,7 +19,8 @@ public class Post {
     @ManyToOne
     @JoinColumn(
             nullable = false,
-            name = "userId"
+            updatable = false,
+            name = "user_id"
     )
     private User userWhoPosted;
 
