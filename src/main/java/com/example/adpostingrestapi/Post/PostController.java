@@ -1,8 +1,5 @@
 package com.example.adpostingrestapi.Post;
 
-import com.example.adpostingrestapi.Post.Post;
-import com.example.adpostingrestapi.Post.PostDto;
-import com.example.adpostingrestapi.Post.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
