@@ -3,6 +3,7 @@ package com.example.adpostingrestapi.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -49,5 +50,14 @@ public class UserServiceImpl implements UserService {
     public void deleteById(long id) {
         findById(id);// throws exception if id was not found, below code won't execute
         userRepository.deleteById(id);
+    }
+
+    @Override // for testing
+    public List<User> createUsers(List<UserRegistrationDto> newUsers) {
+        List <User> returnList = new ArrayList<>();
+        for(UserRegistrationDto user: newUsers){
+            returnList.add(userRepository.save(new User(user)));
+        }
+        return returnList;
     }
 }

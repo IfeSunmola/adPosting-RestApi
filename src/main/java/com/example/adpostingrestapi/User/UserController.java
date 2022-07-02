@@ -33,6 +33,13 @@ public class UserController {
         return new ResponseEntity<>(userService.createUser(newUserInfo), HttpStatus.OK);
     }
 
+    @PostMapping("/new-multiple")
+    public ResponseEntity<List<User>> createUsers(@RequestBody List<UserRegistrationDto> newUsers){
+        ResponseEntity<List<User>> responseEntity =
+                new ResponseEntity<>(userService.createUsers(newUsers), HttpStatus.OK);
+        return responseEntity;
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUserById(@RequestBody UserDto userDto, @PathVariable long id){
         return new ResponseEntity<>(userService.updateById(userDto, id), HttpStatus.OK);
