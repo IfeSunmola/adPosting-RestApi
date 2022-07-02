@@ -13,7 +13,7 @@ public class UserNotFoundException extends RuntimeException{
     }
 
     public UserNotFoundException(String resource, long id) {
-        super(String.format("%s '%d' was not found", resource, id));
+        super(String.format("User %s '%d' was not found", resource, id));
         this.resource = resource;
     }
 }
