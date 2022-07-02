@@ -40,7 +40,7 @@ public class UserController {
         if (!newUserInfo.getPassword().equals(newUserInfo.getConfirmPassword())){
             throw new InvalidParametersException(
                     UserRegistrationDto.class.getName(),
-                    "Password",
+                    "password",
                     "Passwords do not match"
             );
         }
