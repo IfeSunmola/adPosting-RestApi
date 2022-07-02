@@ -1,5 +1,6 @@
 package com.example.adpostingrestapi.User;
 
+import com.example.adpostingrestapi.User.Exceptions.InvalidParametersException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

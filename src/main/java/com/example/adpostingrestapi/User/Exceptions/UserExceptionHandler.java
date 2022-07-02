@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.User;
+package com.example.adpostingrestapi.User.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
 package com.example.adpostingrestapi.User;
 
+import com.example.adpostingrestapi.User.Exceptions.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

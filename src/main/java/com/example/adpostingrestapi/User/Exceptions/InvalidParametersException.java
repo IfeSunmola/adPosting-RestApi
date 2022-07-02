@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.User;
+package com.example.adpostingrestapi.User.Exceptions;
 
 import lombok.Getter;
 import org.springframework.validation.FieldError;
