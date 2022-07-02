@@ -1,9 +1,9 @@
 package com.example.adpostingrestapi.Post;
 
 import lombok.AllArgsConstructor;
-import lombok.ToString;
+import lombok.Getter;
 
-@ToString
+@Getter
 @AllArgsConstructor
 public enum PostCategory {
     BuyAndSell("Buy and Sell"),

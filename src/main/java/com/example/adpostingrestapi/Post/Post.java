@@ -1,6 +1,7 @@
 package com.example.adpostingrestapi.Post;
 
 import com.example.adpostingrestapi.User.User;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Setter
+@Getter
 public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private long postId;
     private String title;

@@ -6,7 +6,8 @@ import java.util.List;
 
 @Service
 public interface PostService {
-    Post createPost(PostDto newPostDto);
+    //Post createPost(PostDto newPostDto);
+    Post createPost(long id, PostDto newPostDto);
     List<Post> findAllPosts();
     List<Post> findPostsByUserId(long id);
     Post findPostById(long id);

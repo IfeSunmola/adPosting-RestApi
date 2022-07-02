@@ -1,5 +1,7 @@
 package com.example.adpostingrestapi.Post;
 
+import com.example.adpostingrestapi.User.User;
+import com.example.adpostingrestapi.User.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +11,18 @@ import java.util.List;
 @Service
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
+    private final UserService userService;
+
+//    @Override
+//    public Post createPost(PostDto newPostDto) {
+//        return new Post(newPostDto);
+//    }
 
     @Override
-    public Post createPost(PostDto newPostDto) {
-        return new Post(newPostDto);
+    public Post createPost(long id, PostDto newPostDto) {
+        User userCreatingPost = userService.findById(id);
+        newPostDto.setUserWhoPosted(userCreatingPost);
+        return postRepository.save(new Post(newPostDto));
     }
 
     @Override
