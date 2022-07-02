@@ -1,0 +1,47 @@
+[
+  {
+    "firstname": "Cesar",
+    "lastname": "Ferry",
+    "email": "Porter_Bode@yahoo.com",
+    "phoneNumber": "859-602-0821",
+    "dateOfBirth": "2012-12-20",
+    "password": "password",
+    "confirmPassword": "password"
+  },
+  {
+    "firstname": "Evan",
+    "lastname": "Huel",
+    "email": "Emile_Connelly@hotmail.com",
+    "phoneNumber": "605-187-9164",
+    "dateOfBirth": "2010-05-26",
+    "password": "password",
+    "confirmPassword": "password"
+  },
+  {
+    "firstname": "Esther",
+    "lastname": "Abernathy",
+    "email": "Jacinto52@hotmail.com",
+    "phoneNumber": "494-042-0243",
+    "dateOfBirth": "1995-08-04",
+    "password": "password",
+    "confirmPassword": "password"
+  },
+  {
+    "firstname": "Blake",
+    "lastname": "Funk",
+    "email": "Brain.Dickinson52@gmail.com",
+    "phoneNumber": "856-557-6763",
+    "dateOfBirth": "1993-04-02",
+    "password": "password",
+    "confirmPassword": "password"
+  },
+  {
+    "firstname": "Neil",
+    "lastname": "Rosenbaum",
+    "email": "Ernest.Windler@hotmail.com",
+    "phoneNumber": "622-687-2688",
+    "dateOfBirth": "2011-09-18",
+    "password": "password",
+    "confirmPassword": "password"
+  }
+]

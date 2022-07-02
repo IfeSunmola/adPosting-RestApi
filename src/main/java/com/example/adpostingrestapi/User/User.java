@@ -33,8 +33,8 @@ public class User {
     protected User (UserRegistrationDto newUserInfo){
         // for registration dto
         // implement role logic
-        this.firstName = newUserInfo.getFirstName();
-        this.lastName = newUserInfo.getLastName();
+        this.firstName = newUserInfo.getFirstname();
+        this.lastName = newUserInfo.getLastname();
         this.email = newUserInfo.getEmail();
         this.phoneNumber = newUserInfo.getPhoneNumber();
         this.dateOfBirth = newUserInfo.getDateOfBirth();

@@ -3,8 +3,10 @@ package com.example.adpostingrestapi.User;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,15 +31,24 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<User> createUser(@RequestBody UserRegistrationDto newUserInfo){
+    public ResponseEntity<User> createUser(@RequestBody @Valid UserRegistrationDto newUserInfo, Errors errors) throws InvalidParametersException {
+        if (errors.hasFieldErrors()){
+            throw new InvalidParametersException(errors.getFieldErrors());
+        }
+        // TODO: Figure out how to confirm password with annotations in UserRegistrationDto
+        if (!newUserInfo.getPassword().equals(newUserInfo.getConfirmPassword())){
+            throw new InvalidParametersException(
+                    UserRegistrationDto.class.getName(),
+                    "Password",
+                    "Passwords do not match"
+            );
+        }
         return new ResponseEntity<>(userService.createUser(newUserInfo), HttpStatus.OK);
     }
 
     @PostMapping("/new-multiple")
     public ResponseEntity<List<User>> createUsers(@RequestBody List<UserRegistrationDto> newUsers){
-        ResponseEntity<List<User>> responseEntity =
-                new ResponseEntity<>(userService.createUsers(newUsers), HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(userService.createUsers(newUsers), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
