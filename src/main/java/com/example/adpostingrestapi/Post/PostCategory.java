@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.Model.Post;
+package com.example.adpostingrestapi.Post;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;

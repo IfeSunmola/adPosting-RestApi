@@ -1,7 +1,5 @@
-package com.example.adpostingrestapi.Service;
+package com.example.adpostingrestapi.Post;
 
-import com.example.adpostingrestapi.Model.Post.Post;
-import com.example.adpostingrestapi.Model.Post.PostDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,10 +1,6 @@
-package com.example.adpostingrestapi.Service.Impl;
+package com.example.adpostingrestapi.Post;
 
 import com.example.adpostingrestapi.Exceptions.PostNotFoundException;
-import com.example.adpostingrestapi.Model.Post.Post;
-import com.example.adpostingrestapi.Model.Post.PostDto;
-import com.example.adpostingrestapi.Repository.PostRepository;
-import com.example.adpostingrestapi.Service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

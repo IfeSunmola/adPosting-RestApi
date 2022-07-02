@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.Model.User;
+package com.example.adpostingrestapi.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

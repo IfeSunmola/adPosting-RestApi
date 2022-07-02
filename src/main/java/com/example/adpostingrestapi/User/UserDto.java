@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.Model.User;
+package com.example.adpostingrestapi.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

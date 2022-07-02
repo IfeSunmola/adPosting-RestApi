@@ -1,8 +1,8 @@
-package com.example.adpostingrestapi.Controller;
+package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Model.User.User;
-import com.example.adpostingrestapi.Model.User.UserDto;
-import com.example.adpostingrestapi.Service.UserService;
+import com.example.adpostingrestapi.User.User;
+import com.example.adpostingrestapi.User.UserDto;
+import com.example.adpostingrestapi.User.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

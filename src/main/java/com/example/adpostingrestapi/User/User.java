@@ -1,6 +1,6 @@
-package com.example.adpostingrestapi.Model.User;
+package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Model.Post.Post;
+import com.example.adpostingrestapi.Post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

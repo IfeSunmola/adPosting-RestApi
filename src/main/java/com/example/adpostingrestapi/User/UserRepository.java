@@ -1,6 +1,5 @@
-package com.example.adpostingrestapi.Repository;
+package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Model.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

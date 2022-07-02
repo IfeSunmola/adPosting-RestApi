@@ -1,10 +1,6 @@
-package com.example.adpostingrestapi.Service.Impl;
+package com.example.adpostingrestapi.User;
 
 import com.example.adpostingrestapi.Exceptions.UserNotFoundException;
-import com.example.adpostingrestapi.Model.User.User;
-import com.example.adpostingrestapi.Model.User.UserDto;
-import com.example.adpostingrestapi.Repository.UserRepository;
-import com.example.adpostingrestapi.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

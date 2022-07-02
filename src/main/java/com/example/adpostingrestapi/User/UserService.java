@@ -1,7 +1,5 @@
-package com.example.adpostingrestapi.Service;
+package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Model.User.User;
-import com.example.adpostingrestapi.Model.User.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
