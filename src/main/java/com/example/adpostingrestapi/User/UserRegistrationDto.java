@@ -32,7 +32,6 @@ public class UserRegistrationDto{
     private String email;
 
     @NotBlank(message = "Phone number is required")
-
     @ValidPhoneNumber
     private String phoneNumber;
 
