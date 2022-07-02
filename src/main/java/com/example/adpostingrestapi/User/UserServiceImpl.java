@@ -1,6 +1,9 @@
 package com.example.adpostingrestapi.User;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,9 +13,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public User createUser(UserRegistrationDto newUserInfo) {
+        newUserInfo.setPassword(passwordEncoder.encode(newUserInfo.getPassword()));
         return userRepository.save(new User(newUserInfo));
     }
 
@@ -56,8 +61,14 @@ public class UserServiceImpl implements UserService {
     public List<User> createUsers(List<UserRegistrationDto> newUsers) {
         List <User> returnList = new ArrayList<>();
         for(UserRegistrationDto user: newUsers){
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             returnList.add(userRepository.save(new User(user)));
         }
         return returnList;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return new CustomUserDetails(findByUsername(username));
     }
 }
