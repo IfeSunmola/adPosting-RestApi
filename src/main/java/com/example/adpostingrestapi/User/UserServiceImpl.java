@@ -34,17 +34,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
-        return  userRepository.findByUsername(username)
+    public User findByEmail(String email) {
+        return  userRepository.findByEmail(email)
                 .orElseThrow(
-                        () -> new UserNotFoundException("Username", username));
+                        () -> new UserNotFoundException("Email", email));
     }
 
     @Override
     public User updateById(UserDto userDto, long id) {
         User userInDb = findById(id);
 
-        userInDb.setUsername(userDto.username());
+        userInDb.setFirstName(userDto.firstName());
+        userInDb.setLastName(userDto.lastName());
+        userInDb.setEmail(userDto.email());
+        userInDb.setPhoneNumber(userDto.phoneNumber());
         userInDb.setDateOfBirth(userDto.dateOfBirth());
         userInDb.setPassword(userDto.password());
         userRepository.save(userInDb);
@@ -68,7 +71,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new CustomUserDetails(findByUsername(username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return new CustomUserDetails(findByEmail(email));
     }
 }

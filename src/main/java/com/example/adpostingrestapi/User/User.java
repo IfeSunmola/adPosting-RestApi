@@ -19,7 +19,10 @@ public class User {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
-    private String username;
+    private String firstName;
+    private String lastName;
+    private String email;// also username
+    private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd") private LocalDate dateOfBirth;
     @Enumerated(EnumType.STRING) private UserRole role;
     private String password;
@@ -30,7 +33,10 @@ public class User {
     protected User (UserRegistrationDto newUserInfo){
         // for registration dto
         // implement role logic
-        this.username = newUserInfo.getUsername();
+        this.firstName = newUserInfo.getFirstName();
+        this.lastName = newUserInfo.getLastName();
+        this.email = newUserInfo.getEmail();
+        this.phoneNumber = newUserInfo.getPhoneNumber();
         this.dateOfBirth = newUserInfo.getDateOfBirth();
         this.password = newUserInfo.getPassword();
         this.timeRegistered = LocalDateTime.now();

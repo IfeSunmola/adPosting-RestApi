@@ -10,7 +10,7 @@ public interface UserService extends UserDetailsService {
     User createUser (UserRegistrationDto newUserInfo);
     List<User> findAll();
     User findById(long id);
-    User findByUsername(String username);
+    User findByEmail(String username);
     User updateById(UserDto userDto, long id);
     void deleteById(long id);
     List<User> createUsers(List<UserRegistrationDto> newUsers);

@@ -13,7 +13,10 @@ import java.time.LocalDate;
 @ToString
 @Setter
 public class UserRegistrationDto {
-    private final String username;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")  private final LocalDate dateOfBirth = LocalDate.now();
     private String password;// needs to be updated with secure password when adding user
     private final String confirmPassword;

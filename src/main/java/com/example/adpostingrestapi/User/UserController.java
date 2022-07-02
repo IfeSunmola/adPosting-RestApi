@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping()
-    public ResponseEntity <User> findUserByUsername(@RequestParam String username){
-        return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);
+    public ResponseEntity <User> findUserByEmail(@RequestParam String email){
+        return new ResponseEntity<>(userService.findByEmail(email), HttpStatus.OK);
     }
 
     @PostMapping("/new")
