@@ -1,6 +1,5 @@
 package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Exceptions.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

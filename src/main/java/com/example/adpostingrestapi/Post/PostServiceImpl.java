@@ -1,6 +1,5 @@
 package com.example.adpostingrestapi.Post;
 
-import com.example.adpostingrestapi.Exceptions.PostNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

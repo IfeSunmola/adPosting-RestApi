@@ -1,4 +1,4 @@
-package com.example.adpostingrestapi.Exceptions;
+package com.example.adpostingrestapi.Post;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
