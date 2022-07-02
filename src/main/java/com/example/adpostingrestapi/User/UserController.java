@@ -1,8 +1,5 @@
 package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.User.User;
-import com.example.adpostingrestapi.User.UserDto;
-import com.example.adpostingrestapi.User.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +29,8 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<User> createUser(@RequestBody UserDto userDto){
-        return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.OK);
+    public ResponseEntity<User> createUser(@RequestBody UserRegistrationDto newUserInfo){
+        return new ResponseEntity<>(userService.createUser(newUserInfo), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")

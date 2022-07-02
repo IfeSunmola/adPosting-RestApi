@@ -11,13 +11,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User createUser(UserDto userDto) {
-        User newUser = new User(
-                userDto.getUsername(),
-                userDto.getDateOfBirth(),
-                userDto.getPassword()
-        );
-        return userRepository.save(newUser);
+    public User createUser(UserRegistrationDto newUserInfo) {
+        return userRepository.save(new User(newUserInfo));
     }
 
     @Override
@@ -43,9 +38,9 @@ public class UserServiceImpl implements UserService {
     public User updateById(UserDto userDto, long id) {
         User userInDb = findById(id);
 
-        userInDb.setUsername(userDto.getUsername());
-        userInDb.setDateOfBirth(userDto.getDateOfBirth());
-        userInDb.setPassword(userDto.getPassword());
+        userInDb.setUsername(userDto.username());
+        userInDb.setDateOfBirth(userDto.dateOfBirth());
+        userInDb.setPassword(userDto.password());
         userRepository.save(userInDb);
         return userInDb;
     }

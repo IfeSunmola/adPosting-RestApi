@@ -1,6 +1,5 @@
 package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.Post.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -20,18 +19,18 @@ public class User {
     private long id;
     private String username;
     @DateTimeFormat(pattern = "yyyy-MM-dd") private LocalDate dateOfBirth;
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    @Enumerated(EnumType.STRING) private UserRole role;
     private String password;
+    private LocalDateTime timeRegistered;
     private boolean isAccountLocked;
     private boolean isAccountEnabled;
-    @OneToMany(mappedBy = "postId")
-    private List<Post> posts;
 
-    protected User(String username, LocalDate dateOfBirth, String password) {
-        // for DTO
-        this.username = username;
-        this.dateOfBirth = dateOfBirth;
-        this.password = password;
+    protected User (UserRegistrationDto newUserInfo){
+        // for registration dto
+        // implement role logic
+        this.username = newUserInfo.getUsername();
+        this.dateOfBirth = newUserInfo.getDateOfBirth();
+        this.password = newUserInfo.getPassword();
+        this.timeRegistered = LocalDateTime.now();
     }
 }

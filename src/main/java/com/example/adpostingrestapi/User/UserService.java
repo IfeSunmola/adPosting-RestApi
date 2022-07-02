@@ -6,7 +6,7 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    User createUser (UserDto userDto);
+    User createUser (UserRegistrationDto newUserInfo);
     List<User> findAll();
     User findById(long id);
     User findByUsername(String username);
