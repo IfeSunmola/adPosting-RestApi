@@ -2,6 +2,7 @@ package com.example.adpostingrestapi.User.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -13,17 +14,17 @@ import java.util.HashMap;
  * Each method returns a hash map (json) with the error message
  * */
 public class UserExceptionHandler {
-    /*
-     * Handles what should be returned when InvalidParametersException is thrown.
-     * InvalidParametersException will be thrown invalid arguments is sent as a request body
-     * Get the field errors, for each error, put to map.
-     * **Map will be automatically converted to JSON**
-     * */
     @ExceptionHandler
-    public ResponseEntity<HashMap<String, String>> invalidParameters(InvalidParametersException ex) {
-        System.out.println("RUNNINGNGNGN");
+    public ResponseEntity<HashMap<String, String>> invalidRequestBody(InvalidParametersException ex) {
         HashMap<String, String> errorMap = new HashMap<>();
         ex.getFieldErrors().forEach(fieldError -> errorMap.put(fieldError.getField(), fieldError.getDefaultMessage()));
         return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<HashMap<String, String>> userNotFound(UsernameNotFoundException ex) {
+        HashMap<String, String> errorMap = new HashMap<>();
+        errorMap.put("Error Message", ex.getMessage());
+        return new ResponseEntity<>(errorMap, HttpStatus.NOT_FOUND);
     }
 }

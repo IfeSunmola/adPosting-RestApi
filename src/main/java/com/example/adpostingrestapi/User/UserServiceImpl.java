@@ -1,6 +1,6 @@
 package com.example.adpostingrestapi.User;
 
-import com.example.adpostingrestapi.User.Exceptions.UserNotFoundException;
+import com.example.adpostingrestapi.User.Exceptions.InvalidParametersException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,7 +17,44 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public User createUser(UserRegistrationDto newUserInfo) {
+    public User findById(long id) {
+        return userRepository.findById(id)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("User with id " + id + " was not found"));
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return  userRepository.findByEmail(email)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("Username/Email '" + email + "' was not found"));
+    }
+
+    @Override
+    public User findByPhoneNumber(String phoneNumber) {
+        return  userRepository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("Phone number '" + phoneNumber + "' was not found"));
+    }
+
+    @Override
+    public User createUser(UserRegistrationDto newUserInfo) throws InvalidParametersException {
+        if (findByEmail(newUserInfo.getEmail()) != null){
+            throw new InvalidParametersException(
+                    UserRegistrationDto.class.getName(),
+                    "email",
+                    "Email has already been registered"
+            );
+        }
+
+        if (findByPhoneNumber(newUserInfo.getPhoneNumber()) != null){
+            throw new InvalidParametersException(
+                    UserRegistrationDto.class.getName(),
+                    "phoneNumber",
+                    "Phone number has been linked to an account"
+            );
+        }
+        //TODO: Set up roles
         newUserInfo.setPassword(passwordEncoder.encode(newUserInfo.getPassword()));
         return userRepository.save(new User(newUserInfo));
     }
@@ -28,22 +65,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(long id) {
-        return userRepository.findById(id)
-                .orElseThrow(
-                        () -> new UserNotFoundException("Id", id));
-    }
-
-    @Override
-    public User findByEmail(String email) {
-        return  userRepository.findByEmail(email)
-                .orElseThrow(
-                        () -> new UserNotFoundException("Email", email));
-    }
-
-    @Override
     public User updateById(UserDto userDto, long id) {
-        User userInDb = findById(id);
+        User userInDb = findById(id);// throws exception if id was not found. below code won't execute
 
         userInDb.setFirstName(userDto.firstName());
         userInDb.setLastName(userDto.lastName());
@@ -57,11 +80,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(long id) {
-        findById(id);// throws exception if id was not found, below code won't execute
+        findById(id);// throws exception if id was not found. below code won't execute
         userRepository.deleteById(id);
     }
 
-    @Override // for testing
+    @Override
+    public UserDetails loadUserByUsername(String email) {
+        User user = findByEmail(email); // throws exception if id was not found. below code won't execute
+        return new CustomUserDetails((user));
+    }
+
+    @Override // for testing, DELETE LATER
     public List<User> createUsers(List<UserRegistrationDto> newUsers) {
         List <User> returnList = new ArrayList<>();
         for(UserRegistrationDto user: newUsers){
@@ -69,10 +98,5 @@ public class UserServiceImpl implements UserService {
             returnList.add(userRepository.save(new User(user)));
         }
         return returnList;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return new CustomUserDetails(findByEmail(email));
     }
 }
