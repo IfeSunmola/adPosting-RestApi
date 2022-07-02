@@ -24,7 +24,7 @@ public class Post {
     )
     private User userWhoPosted;
 
-    public Post(PostDto postDto){
+    protected Post(PostDto postDto){
         title = postDto.getTitle();
         body = postDto.getBody();
         timePosted = LocalDateTime.now();

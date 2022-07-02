@@ -28,7 +28,7 @@ public class User {
     @OneToMany(mappedBy = "postId")
     private List<Post> posts;
 
-    public User(String username, LocalDate dateOfBirth, String password) {
+    protected User(String username, LocalDate dateOfBirth, String password) {
         // for DTO
         this.username = username;
         this.dateOfBirth = dateOfBirth;
